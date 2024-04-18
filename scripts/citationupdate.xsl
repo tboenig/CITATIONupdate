@@ -22,15 +22,17 @@
     <xsl:param name="releaseTag"/>
     
     
-    
+    <xsl:variable name="citationPath">./?select=CITATION.json;recurse=yes</xsl:variable>
     
     <xsl:variable name="docMETADATA">
-        <xsl:copy-of select="json-to-xml(unparsed-text('../CITATION.json'))"/>
+        <xsl:copy-of select="json-to-xml(unparsed-text('../../CITATION.json'))"/>
     </xsl:variable>
     
     <xsl:param name="output"/>
 
     <xsl:template match="/">
+
+<xsl:message select="$citationPath"></xsl:message>
 
 <xsl:if test="$output = 'CITATION'">
     <xsl:variable name="Author">
